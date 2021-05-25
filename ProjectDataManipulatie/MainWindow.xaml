@@ -1,0 +1,86 @@
+﻿<Window x:Class="ProjectDataManipulatie.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjectDataManipulatie"
+        mc:Ignorable="d"
+                xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" TextElement.Foreground="{DynamicResource MaterialDesignBody}" TextElement.FontWeight="Regular" TextElement.FontSize="13" TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="Auto" Background="{DynamicResource MaterialDesignPaper}" FontFamily="{DynamicResource MaterialDesignFont}"
+
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBox
+            x:Name="txtSearch"
+            materialDesign:HintAssist.Hint="Name"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            VerticalAlignment="Center" Margin="10" Grid.Row="0" Grid.Column="0"/>
+        <ComboBox
+            x:Name="cmbColor"
+            materialDesign:HintAssist.Hint="Color"
+            IsEditable="false"
+            materialDesign:HintAssist.HintOpacity=".26"
+            Grid.Column="1" Grid.Row="0" Margin="10">
+        </ComboBox>
+        <ComboBox
+            x:Name="cmbType"
+            materialDesign:HintAssist.Hint="Type"
+            IsEditable="false"
+            materialDesign:HintAssist.HintOpacity=".26"
+            Grid.Column="2" Grid.Row="0" Margin="10">
+        </ComboBox>
+        <ComboBox
+            x:Name="cmbRarity"
+            materialDesign:HintAssist.Hint="Rarity"
+            IsEditable="false"
+            materialDesign:HintAssist.HintOpacity=".26"
+            Grid.Column="3" Grid.Row="0" Margin="10">
+        </ComboBox>
+        <ComboBox
+            x:Name="cmbExpansion"
+            materialDesign:HintAssist.Hint="Expansion"
+            IsEditable="false"
+            materialDesign:HintAssist.HintOpacity=".26"
+            Grid.Column="4" Grid.Row="0" Margin="10">
+        </ComboBox>
+        <Button
+            x:Name="btnSearch"
+            Style="{StaticResource MaterialDesignRaisedButton}"
+            Width="100"
+            ToolTip="Resource name: MaterialDesignRaisedButton"
+            Grid.Column="5"  Background="Black" BorderBrush="#FF4D4D4D" Click="btnSearch_Click">
+            Search
+        </Button>
+        <DataGrid x:Name="dataMTG" AutoGenerateColumns="False" Grid.Row="1" Grid.ColumnSpan="5" Grid.RowSpan="2" Margin="10" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Naam}" Header="Naam"/>
+                <DataGridTextColumn Binding="{Binding Color}" Header="Color"/>
+                <DataGridTextColumn Binding="{Binding Type}" Header="Type"/>
+                <DataGridTextColumn Binding="{Binding Rarity}" Header="Rarity"/>
+                <DataGridTextColumn Binding="{Binding Expansion}" Header="Expansion"/>
+
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Label x:Name="lblInfo" Content="example" Grid.Row="3" Grid.ColumnSpan="5"/>
+
+
+
+
+
+    </Grid>
+</Window>

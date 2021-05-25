@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MagicTheGatheringModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Artist">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naam" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Kaart" Relationship="Self.FK_Kaart_artistID" FromRole="Artist" ToRole="Kaart" />
+  </EntityType>
+  <EntityType Name="Color">
+    <Key>
+      <PropertyRef Name="ColorID" />
+    </Key>
+    <Property Name="ColorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kleur" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Kaart" Relationship="Self.FK_Kaart_colorID" FromRole="Color" ToRole="Kaart" />
+  </EntityType>
+  <EntityType Name="Deck">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naam" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Kaart" Relationship="Self.FK_Kaart_deckID" FromRole="Deck" ToRole="Kaart" />
+  </EntityType>
+  <EntityType Name="Expansion">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Symbool" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="AantalKaarten" Type="Int32" />
+    <Property Name="Code" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="ReleaseDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Kaart" Relationship="Self.FK_Kaart_expansionID" FromRole="Expansion" ToRole="Kaart" />
+  </EntityType>
+  <EntityType Name="Kaart">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naam" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TypeID" Type="Int32" />
+    <Property Name="KaartTekst" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FlavorText" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Wartermark" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ExpansionID" Type="Int32" Nullable="false" />
+    <Property Name="RarityID" Type="Int32" Nullable="false" />
+    <Property Name="KaartNummer" Type="Int32" Nullable="false" />
+    <Property Name="ArtistID" Type="Int32" />
+    <Property Name="ColorID" Type="Int32" Nullable="false" />
+    <Property Name="DeckID" Type="Int32" />
+    <NavigationProperty Name="Artist" Relationship="Self.FK_Kaart_artistID" FromRole="Kaart" ToRole="Artist" />
+    <NavigationProperty Name="Color" Relationship="Self.FK_Kaart_colorID" FromRole="Kaart" ToRole="Color" />
+    <NavigationProperty Name="Deck" Relationship="Self.FK_Kaart_deckID" FromRole="Kaart" ToRole="Deck" />
+    <NavigationProperty Name="Expansion" Relationship="Self.FK_Kaart_expansionID" FromRole="Kaart" ToRole="Expansion" />
+    <NavigationProperty Name="Rarity" Relationship="Self.FK_Kaart_RarityID" FromRole="Kaart" ToRole="Rarity" />
+    <NavigationProperty Name="Type" Relationship="Self.FK_Kaart_TypeID" FromRole="Kaart" ToRole="Type" />
+  </EntityType>
+  <EntityType Name="Rarity">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="rarity1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Kaart" Relationship="Self.FK_Kaart_RarityID" FromRole="Rarity" ToRole="Kaart" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Type">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="naam" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Kaart" Relationship="Self.FK_Kaart_TypeID" FromRole="Type" ToRole="Kaart" />
+  </EntityType>
+  <Association Name="FK_Kaart_artistID">
+    <End Role="Artist" Type="Self.Artist" Multiplicity="0..1" />
+    <End Role="Kaart" Type="Self.Kaart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Artist">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Kaart">
+        <PropertyRef Name="ArtistID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kaart_colorID">
+    <End Role="Color" Type="Self.Color" Multiplicity="1" />
+    <End Role="Kaart" Type="Self.Kaart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Color">
+        <PropertyRef Name="ColorID" />
+      </Principal>
+      <Dependent Role="Kaart">
+        <PropertyRef Name="ColorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kaart_deckID">
+    <End Role="Deck" Type="Self.Deck" Multiplicity="0..1" />
+    <End Role="Kaart" Type="Self.Kaart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Deck">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Kaart">
+        <PropertyRef Name="DeckID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kaart_expansionID">
+    <End Role="Expansion" Type="Self.Expansion" Multiplicity="1" />
+    <End Role="Kaart" Type="Self.Kaart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Expansion">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Kaart">
+        <PropertyRef Name="ExpansionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kaart_RarityID">
+    <End Role="Rarity" Type="Self.Rarity" Multiplicity="1" />
+    <End Role="Kaart" Type="Self.Kaart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rarity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Kaart">
+        <PropertyRef Name="RarityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kaart_TypeID">
+    <End Role="Type" Type="Self.Type" Multiplicity="0..1" />
+    <End Role="Kaart" Type="Self.Kaart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Kaart">
+        <PropertyRef Name="TypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MagicTheGatheringEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Artist" EntityType="Self.Artist" />
+    <EntitySet Name="Color" EntityType="Self.Color" />
+    <EntitySet Name="Deck" EntityType="Self.Deck" />
+    <EntitySet Name="Expansion" EntityType="Self.Expansion" />
+    <EntitySet Name="Kaart" EntityType="Self.Kaart" />
+    <EntitySet Name="Rarity" EntityType="Self.Rarity" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Type" EntityType="Self.Type" />
+    <AssociationSet Name="FK_Kaart_artistID" Association="Self.FK_Kaart_artistID">
+      <End Role="Artist" EntitySet="Artist" />
+      <End Role="Kaart" EntitySet="Kaart" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kaart_colorID" Association="Self.FK_Kaart_colorID">
+      <End Role="Color" EntitySet="Color" />
+      <End Role="Kaart" EntitySet="Kaart" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kaart_deckID" Association="Self.FK_Kaart_deckID">
+      <End Role="Deck" EntitySet="Deck" />
+      <End Role="Kaart" EntitySet="Kaart" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kaart_expansionID" Association="Self.FK_Kaart_expansionID">
+      <End Role="Expansion" EntitySet="Expansion" />
+      <End Role="Kaart" EntitySet="Kaart" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kaart_RarityID" Association="Self.FK_Kaart_RarityID">
+      <End Role="Rarity" EntitySet="Rarity" />
+      <End Role="Kaart" EntitySet="Kaart" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kaart_TypeID" Association="Self.FK_Kaart_TypeID">
+      <End Role="Type" EntitySet="Type" />
+      <End Role="Kaart" EntitySet="Kaart" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,11 @@
+C:\Users\Arnot\source\repos\ProjectDataManipulatie\MagicTheGathering_DAL\bin\Debug\MagicTheGathering_DAL.dll.config
+C:\Users\Arnot\source\repos\ProjectDataManipulatie\MagicTheGathering_DAL\bin\Debug\MagicTheGathering_DAL.dll
+C:\Users\Arnot\source\repos\ProjectDataManipulatie\MagicTheGathering_DAL\bin\Debug\MagicTheGathering_DAL.pdb
+C:\Users\Arnot\source\repos\ProjectDataManipulatie\MagicTheGathering_DAL\bin\Debug\EntityFramework.dll
+C:\Users\Arnot\source\repos\ProjectDataManipulatie\MagicTheGathering_DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Arnot\source\repos\ProjectDataManipulatie\MagicTheGathering_DAL\bin\Debug\EntityFramework.xml
+C:\Users\Arnot\source\repos\ProjectDataManipulatie\MagicTheGathering_DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Arnot\source\repos\ProjectDataManipulatie\MagicTheGathering_DAL\obj\Debug\MagicTheGathering_DAL.csproj.CoreCompileInputs.cache
+C:\Users\Arnot\source\repos\ProjectDataManipulatie\MagicTheGathering_DAL\obj\Debug\MagicTheGathering_DAL.csproj.CopyComplete
+C:\Users\Arnot\source\repos\ProjectDataManipulatie\MagicTheGathering_DAL\obj\Debug\MagicTheGathering_DAL.dll
+C:\Users\Arnot\source\repos\ProjectDataManipulatie\MagicTheGathering_DAL\obj\Debug\MagicTheGathering_DAL.pdb

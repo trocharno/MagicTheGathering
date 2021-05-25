@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="27bca7e75864429e9b6f754774c83bdc" Name="Diagram1">
+        <EntityTypeShape EntityType="MagicTheGatheringModel.Artist" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagicTheGatheringModel.Color" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagicTheGatheringModel.Deck" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagicTheGatheringModel.Expansion" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagicTheGatheringModel.Kaart" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagicTheGatheringModel.Rarity" Width="1.5" PointX="0.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagicTheGatheringModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagicTheGatheringModel.Type" Width="1.5" PointX="0.75" PointY="15.75" IsExpanded="true" />
+        <AssociationConnector Association="MagicTheGatheringModel.FK_Kaart_artistID" ManuallyRouted="false" />
+        <AssociationConnector Association="MagicTheGatheringModel.FK_Kaart_colorID" ManuallyRouted="false" />
+        <AssociationConnector Association="MagicTheGatheringModel.FK_Kaart_deckID" ManuallyRouted="false" />
+        <AssociationConnector Association="MagicTheGatheringModel.FK_Kaart_expansionID" ManuallyRouted="false" />
+        <AssociationConnector Association="MagicTheGatheringModel.FK_Kaart_RarityID" ManuallyRouted="false" />
+        <AssociationConnector Association="MagicTheGatheringModel.FK_Kaart_TypeID" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
