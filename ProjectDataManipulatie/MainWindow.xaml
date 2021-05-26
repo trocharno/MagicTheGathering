@@ -8,7 +8,7 @@
                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" TextElement.Foreground="{DynamicResource MaterialDesignBody}" TextElement.FontWeight="Regular" TextElement.FontSize="13" TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="Auto" Background="{DynamicResource MaterialDesignPaper}" FontFamily="{DynamicResource MaterialDesignFont}"
 
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
-    <Grid>
+    <Grid Background="#FFF1F1F1">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition/>
@@ -31,28 +31,28 @@
         <ComboBox
             x:Name="cmbColor"
             materialDesign:HintAssist.Hint="Color"
-            IsEditable="false"
+            IsEditable="True"
             materialDesign:HintAssist.HintOpacity=".26"
             Grid.Column="1" Grid.Row="0" Margin="10">
         </ComboBox>
         <ComboBox
             x:Name="cmbType"
             materialDesign:HintAssist.Hint="Type"
-            IsEditable="false"
+            IsEditable="True"
             materialDesign:HintAssist.HintOpacity=".26"
             Grid.Column="2" Grid.Row="0" Margin="10">
         </ComboBox>
         <ComboBox
             x:Name="cmbRarity"
             materialDesign:HintAssist.Hint="Rarity"
-            IsEditable="false"
+            IsEditable="True"
             materialDesign:HintAssist.HintOpacity=".26"
             Grid.Column="3" Grid.Row="0" Margin="10">
         </ComboBox>
         <ComboBox
             x:Name="cmbExpansion"
             materialDesign:HintAssist.Hint="Expansion"
-            IsEditable="false"
+            IsEditable="True"
             materialDesign:HintAssist.HintOpacity=".26"
             Grid.Column="4" Grid.Row="0" Margin="10">
         </ComboBox>
@@ -61,12 +61,33 @@
             Style="{StaticResource MaterialDesignRaisedButton}"
             Width="100"
             ToolTip="Resource name: MaterialDesignRaisedButton"
-            Grid.Column="5"  Background="Black" BorderBrush="#FF4D4D4D" Click="btnSearch_Click">
+            Grid.Column="5"  Background="#FFE65B27" BorderBrush="#FFBB9CD4" Click="btnSearch_Click">
             Search
         </Button>
-        <DataGrid x:Name="dataMTG" AutoGenerateColumns="False" Grid.Row="1" Grid.ColumnSpan="5" Grid.RowSpan="2" Margin="10" IsReadOnly="True">
+        <StackPanel Grid.Row="1" Grid.Column="5" Margin="10">
+            <Button
+            x:Name="btnAddCard"
+            Style="{StaticResource MaterialDesignRaisedButton}"
+            Width="100"
+            ToolTip="Resource name: MaterialDesignRaisedButton"
+            Margin="5"
+            Grid.Row="1" Grid.Column="5"  Background="#FF673AB7" BorderBrush="#FFBB9CD4">
+                Add Card
+            </Button>
+            <Button
+            x:Name="btnDeck"
+            Style="{StaticResource MaterialDesignRaisedButton}"
+            Width="100"
+            ToolTip="Resource name: MaterialDesignRaisedButton"
+            Grid.Row="1" Grid.Column="5"  Background="#FF673AB7" BorderBrush="#FFBB9CD4" Click="btnDeck_Click">
+                Deck
+            </Button>
+            
+        </StackPanel>
+        
+        <DataGrid x:Name="dataMTG" AutoGenerateColumns="False" Grid.Row="1" Grid.ColumnSpan="5" Grid.RowSpan="2" Margin="10" IsReadOnly="True" Background="White">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Naam}" Header="Naam"/>
+                <DataGridTextColumn Binding="{Binding Naam}" Header="Name"/>
                 <DataGridTextColumn Binding="{Binding Color}" Header="Color"/>
                 <DataGridTextColumn Binding="{Binding Type}" Header="Type"/>
                 <DataGridTextColumn Binding="{Binding Rarity}" Header="Rarity"/>

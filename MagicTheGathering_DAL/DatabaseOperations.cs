@@ -51,9 +51,6 @@ namespace MagicTheGathering_DAL
                             .Include(x => x.Color)
                             .Include(x => x.Rarity)
                             .Include(x => x.Expansion);
-
-
-
                 return query.ToList();
             }
         }
@@ -79,7 +76,36 @@ namespace MagicTheGathering_DAL
                             .Include(x => x.Color)
                             .Include(x => x.Rarity)
                             .Include(x => x.Expansion)
-                            .Where(x => x.Expansion.Naam == expansion);
+                            .Where(x => x.Expansion.Naam == expansion)
+                            .OrderBy(x => x.RarityID);
+                return query.ToList();
+            }
+        }
+        public static List<Kaart> ZoekenOpType(string type)
+        {
+            using (MagicTheGatheringEntities entities = new MagicTheGatheringEntities())
+            {
+                var query = entities.Kaart
+                            .Include(x => x.Type)
+                            .Include(x => x.Color)
+                            .Include(x => x.Rarity)
+                            .Include(x => x.Expansion)
+                            .Where(x => x.Type.naam == type)
+                            .OrderBy(x => x.RarityID);
+                return query.ToList();
+            }
+        }
+        public static List<Kaart> ZoekenOpKleurEnType(string color, string type)
+        {
+            using (MagicTheGatheringEntities entities = new MagicTheGatheringEntities())
+            {
+                var query = entities.Kaart
+                            .Include(x => x.Type)
+                            .Include(x => x.Color)
+                            .Include(x => x.Rarity)
+                            .Include(x => x.Expansion)
+                            .Where(x => x.Type.naam == type)
+                            .Where(x => x.Color.kleur == color);
                 return query.ToList();
             }
         }

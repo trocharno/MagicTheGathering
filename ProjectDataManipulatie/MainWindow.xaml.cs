@@ -36,26 +36,29 @@ namespace ProjectDataManipulatie
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtSearch.Text))
+            if (!string.IsNullOrWhiteSpace(cmbType.SelectedItem.ToString()))
+            {
+                dataMTG.ItemsSource = DatabaseOperations.ZoekenOpType(cmbType.SelectedItem.ToString());
+            }        
+            else if (!string.IsNullOrWhiteSpace(cmbExpansion.SelectedItem.ToString()))
+            {
+                dataMTG.ItemsSource = DatabaseOperations.ZoekenOpExpansion(cmbExpansion.SelectedItem.ToString());
+            }
+            else if (string.IsNullOrWhiteSpace(txtSearch.Text))
             {
                 dataMTG.ItemsSource = DatabaseOperations.OphalenKaart();
-                
             }
-            else
+            else if (!string.IsNullOrWhiteSpace(txtSearch.Text))
             {
                 dataMTG.ItemsSource = DatabaseOperations.OphalenKaartViaZoeken(txtSearch.Text);
             }
-
             
-            
-
-
-
-
         }
 
-            
-         
+        private void btnDeck_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
     
 }
